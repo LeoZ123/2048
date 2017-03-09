@@ -1,24 +1,28 @@
+/*
+ * Created by Leo.H & MC.Gong on 2017/3/6.
+ */
 
-.row {
-	display: block;
-	width:100%;
-}
+/* This file is used to style content*/
 
-.column {
+.block {
 	display: inline-block;
-	width:100px;
+	width:120px;
+	height: 120px;
+	float: left;
 	color:white;
-	height:100px;
-	font-size:3em;
-	margin: 5px;
-	padding: 0px;
-	background-color: blue;
+	height:120px;
+	font-size:50px;
+	background-color: #BEBEBE;
 	text-align: center;
 	vertical-align: bottom;
 	box-shadow: 4px 4px 2px #8a8a8a;
+	margin-left: 10px;
+	margin-top: 10px;
 }
 
 body {
 	text-align: center;
-	padding-top: 100px;	overflow-y: hidden;
+	padding-top: 100px;
+	overflow-y: hidden;
+	position: absolute;
 }
