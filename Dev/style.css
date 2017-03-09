@@ -4,25 +4,38 @@
 
 /* This file is used to style content*/
 
-.block {
-	display: inline-block;
-	width:120px;
-	height: 120px;
-	float: left;
-	color:white;
-	height:120px;
-	font-size:50px;
-	background-color: #BEBEBE;
-	text-align: center;
-	vertical-align: bottom;
-	box-shadow: 4px 4px 2px #8a8a8a;
+.main
+{
+	border-style: solid;
+	width: 500px;
+	height: 500px;
+	background-color: #8E8E8E;
+	border-color: #8E8E8E;
+	top: 40px;
+	left: 400px;
+	border-radius: 10px;
+	position: absolute;
+}
+.block
+{
 	margin-left: 10px;
 	margin-top: 10px;
+	width: 112.5;
+	height: 112.5;
+	background-color: #BEBEBE;
+	float: left;
+	font-size: 50px;
+	text-align: center;
+	line-height:112.5px;
+	color: white;
 }
 
-body {
-	text-align: center;
-	padding-top: 100px;
-	overflow-y: hidden;
-	position: absolute;
+#score
+{
+	font-size: 16px;
+	font-family: 'Arial',sans-serif;
+	font-weight: normal;
+	line-height: 1.5
+	color: #323232
+
 }
