@@ -12,14 +12,17 @@ $(document).ready(function(){
 	}
 
 	var getRandomNumber = function () {
-		return Math.random() > 0.5 ? 2 : 4
+		return Math.random() > 0.5 ? 2 : 4;
 	}
 
+
+	//generate a valid to store an random num created from getRandomNumber
 	var getRandomFreeCell = function () {
 		var block = this.$main.find('[num="no"]')
-		var count = block.length
-		var rand = Math.floor(Math.random() * count)
-		return block.eq(rand)
+		var count = 4；
+		var RandColumn = Math.floor(Math.random() * count);
+		var RandRow = Math.floor(Math.random() * count);
+		BlockTable[RandomRow][RandColumn] = getRandomNumber();
 	}
 
 	var	updateBlock = function ($block, num) {
@@ -31,4 +34,4 @@ $(document).ready(function(){
 			.find('div')
 			.text(num === 0 ? "" : num)
 	}
-}
+})

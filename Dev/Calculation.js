@@ -7,14 +7,6 @@ $(document).ready(function(){
 	/*RestBlock to record how many empty block left and available to create new value*/
 	var RestBlock=16;
 
-	/* mapping the game table*/
-	var BlockTable = [
-	    [0, 0, 0, 0],
-	    [0, 0, 0, 0],
-	    [0, 0, 0, 0],
-	    [0, 0, 0, 0]
-	];
-
 
 	/*function is used to call MoveLine function to move block for all rows or columns.*/
 	var calculate = function(direction)
