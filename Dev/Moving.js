@@ -19,7 +19,7 @@ $(document).ready(function(){
 	//generate a valid to store an random num created from getRandomNumber
 	var getRandomFreeCell = function () {
 		var block = this.$main.find('[num="no"]')
-		var count = 4；
+		var count = 4;
 		var RandColumn = Math.floor(Math.random() * count);
 		var RandRow = Math.floor(Math.random() * count);
 		BlockTable[RandomRow][RandColumn] = getRandomNumber();
