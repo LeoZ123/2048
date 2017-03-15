@@ -5,25 +5,33 @@
 
 // This file is used to start and restart the game
 
-var isFull()
+/* mapping the game table*/
+var BlockTable = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+];
+
+//check if it is full
+var isFull = function()
 {
     if (RestBlock === 16)
     {
         return true;
     }
     return false;
-}
+};
 
-var start=function ()
+/*RestBlock to record how many empty block left and available to create new value*/
+var RestBlock;
+var Score;
+
+//start the game
+var StartGame=function ()
 {
-    /* mapping the game table*/
-    var BlockTable = [
-	    [0, 0, 0, 0],
-	    [0, 0, 0, 0],
-	    [0, 0, 0, 0],
-	    [0, 0, 0, 0]
-	];
+    RestBlock=16;
+    Score=0;
     getRandomFreeCell();                //generate two blocks to start
     getRandomFreeCell();
-
-}
+};
