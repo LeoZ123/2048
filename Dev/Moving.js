@@ -5,15 +5,9 @@
 // This file is the main script file.
 // This file is used to move the block.
 $(document).ready(function(){
-	var setNumber = function (row, col, num) { //TO DO
-		var BlockIndex = row * 4 + col;
-		BlockTable[row][col] = num;
-	    $("#block"+BlockIndex).text(BlockTable);
-	}
-
 	var getRandomNumber = function () {
-		return Math.random() > 0.5 ? 2 : 4;
-	}
+		return Math.random() > 0.3 ? 2 : 4;
+	};
 
 
 	//generate a valid to store an random num created from getRandomNumber
@@ -25,8 +19,7 @@ $(document).ready(function(){
 		BlockTable[RandRow][RandColumn] = getRandomNumber();
 	};
 
-
-
+	//update block num
 	var	updateBlock = function ($block, num) {
 		$block.attr('num',
 				num === 0 ?
@@ -34,6 +27,104 @@ $(document).ready(function(){
 					num > 2048 ? "super" : num
 			)
 			.find('div')
-			.text(num === 0 ? "" : num)
-	}
+			.text(num === 0 ? " " : num)
+	};
+
+
+/*-----------------------------keypressed Function---------------------------*/
+	//keypressed function to move blocks
+	document.KeyPressed=function(event)
+	{
+		if(!isGameOver)
+		{
+			/*Move Up*/
+			if(event.keycode == 38)
+			{
+				if(UpMoving())
+				getRandomFreeCell();
+			}
+
+			/*Move Down*/
+			if(event.keycode == 40)
+			{
+				if(DownMoving(())
+				{
+					getRandomFreeCell();
+				}
+			}
+
+			/*Move Left*/
+			if(event.keycode == 37)
+			{
+				if(LeftMoving(())
+				{
+					getRandomFreeCell();
+				}
+			}
+
+			/*Move Right*/
+			if(event.keycode == 49)
+			{
+				if(RightMoving())
+				{
+					getRandomFreeCell();
+				}
+			}
+
+			if(noMove())
+			{
+				isGameOver = true;
+			}
+
+		}
+	};
+
+/*-------------------------------Moving Function---------------------------*/
+	// when up key pressed, run UpMoving
+	function UpMoving()
+	{
+		if(!canMoveUp())
+		{
+			return false;
+		}
+		// TODO
+
+		return true;
+	};
+
+	// when down key pressed, run DownMoving
+	function DownMoving()
+	{
+		if(!canMoveDown())
+		{
+			return false;
+		}
+		// TODO
+
+		return true;
+	};
+
+
+	// when left key pressed, run LeftMoving
+	function LeftMoving()
+	{
+		if(!canMoveLeft())
+		{
+			return false;
+		}
+		//TODO
+
+		return true;
+	};
+
+	// when right key pressed, run RightMoving
+	function RightMoving()
+	{
+		if(!canMoveRight())
+		{
+			return false;
+		}
+		//TODO
+		return true;
+	};
 });
