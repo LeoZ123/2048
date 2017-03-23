@@ -4,47 +4,21 @@
 
 // This file is the main script file.
 // This file is used to move the block.
-$(document).ready(function(){
-	var getRandomNumber = function () {
-		return Math.random() > 0.3 ? 2 : 4;
-	};
-
-
-	//generate a valid to store an random num created from getRandomNumber
-	var getRandomFreeCell = function () {
-		var block = this.$main.find('[num="no"]');
-		var count = 4;
-		var RandColumn = Math.floor(Math.random() * count);
-		var RandRow = Math.floor(Math.random() * count);
-		BlockTable[RandRow][RandColumn] = getRandomNumber();
-	};
-
-	//update block num
-	var	updateBlock = function ($block, num) {
-		$block.attr('num',
-				num === 0 ?
-					"no" :
-					num > 2048 ? "super" : num
-			)
-			.find('div')
-			.text(num === 0 ? " " : num)
-	};
-
 
 /*-----------------------------keypressed Function---------------------------*/
 	//keypressed function to move blocks
-	document.KeyPressed=function(event)
+/*	document.KeyPressed=function(event)
 	{
 		if(!isGameOver)
 		{
-			/*Move Up*/
+			//Move Up
 			if(event.keycode == 38)
 			{
 				if(UpMoving())
 				getRandomFreeCell();
 			}
 
-			/*Move Down*/
+			//Move Down
 			if(event.keycode == 40)
 			{
 				if(DownMoving(())
@@ -53,7 +27,7 @@ $(document).ready(function(){
 				}
 			}
 
-			/*Move Left*/
+			//Move Left
 			if(event.keycode == 37)
 			{
 				if(LeftMoving(())
@@ -62,7 +36,7 @@ $(document).ready(function(){
 				}
 			}
 
-			/*Move Right*/
+			//Move Right
 			if(event.keycode == 49)
 			{
 				if(RightMoving())
@@ -78,7 +52,7 @@ $(document).ready(function(){
 
 		}
 	};
-
+*/
 /*-------------------------------Moving Function---------------------------*/
 	// when up key pressed, run UpMoving
 	function UpMoving()
@@ -127,4 +101,52 @@ $(document).ready(function(){
 		//TODO
 		return true;
 	};
-});
+
+
+/*-------------------------------Display Function---------------------------*/
+	var getRandomNumber = function () {
+		return Math.random() > 0.3 ? 2 : 4;
+	};
+
+
+	//generate a valid to store an random num created from getRandomNumber
+	var getRandomFreeCell = function () {
+		var count = 4;
+		var RandColumn = Math.floor(Math.random() * count);
+		var RandRow = Math.floor(Math.random() * count);
+		var cellValue = document.getElementById("block"+RandRow+"-"+RandColumn).value;
+
+		if (cellValue == undefined){
+			return "block"+RandRow+"-"+RandColumn;
+		}
+	};
+
+	//display value to the cell
+	var showValue = function (id, num) {
+		document.getElementById(id).innerHTML= num;
+	};
+
+	//play again
+	var refresh = function () {
+		for (var i=0;i<4;i++)
+	    {
+	        for(var j=0;j<4;j++)
+	        {
+	            document.getElementById("block"+i+"-"+j).innerHTML="";
+	        }
+	    }
+		showValue(getRandomFreeCell(),getRandomNumber());
+		showValue(getRandomFreeCell(),getRandomNumber());
+	};
+
+
+	//update block num
+	var	updateBlock = function ($block, num) {
+		$block.attr('num',
+				num === 0 ?
+					"no" :
+					num > 2048 ? "super" : num
+			)
+			.find('div')
+			.text(num === 0 ? " " : num)
+	};

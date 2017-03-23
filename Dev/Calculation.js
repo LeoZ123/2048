@@ -3,7 +3,7 @@
  */
 
 // This file is used to calculate the score of game
-$(document).ready(function(){
+
 
 	/*function is used to call MoveLine function to move block for all rows or columns.*/
 	var calculate = function(direction)
@@ -48,4 +48,8 @@ $(document).ready(function(){
 	        }
 	    }
 	}
-});
+
+
+
+
+
