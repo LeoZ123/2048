@@ -121,32 +121,6 @@
 		}
 	};
 
-	//display value to the cell
-	var showValue = function (id, num) {
-		document.getElementById(id).innerHTML= num;
-	};
-
-	//play again
-	var refresh = function () {
-		for (var i=0;i<4;i++)
-	    {
-	        for(var j=0;j<4;j++)
-	        {
-	            document.getElementById("block"+i+"-"+j).innerHTML="";
-	        }
-	    }
-		showValue(getRandomFreeCell(),getRandomNumber());
-		showValue(getRandomFreeCell(),getRandomNumber());
-	};
 
 
-	//update block num
-	var	updateBlock = function ($block, num) {
-		$block.attr('num',
-				num === 0 ?
-					"no" :
-					num > 2048 ? "super" : num
-			)
-			.find('div')
-			.text(num === 0 ? " " : num)
-	};
+	

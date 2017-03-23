@@ -83,6 +83,21 @@ function canMoveLeft()
      return false;
  };
 
+//check if the block is empty
+function Check()
+{
+    for (var i = 0; i < 4; i++)
+    {
+        for (var j = 0; j < 4; j++)
+        {
+            if (BlockTable[i][j] == 0)
+            {
+                block[i][j].innerHTML = "";
+            }
+        }
+    }
+};
+
 //cannot move
  function noMove()
  {

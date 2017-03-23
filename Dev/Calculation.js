@@ -6,13 +6,13 @@
 
 
 	/*function is used to call MoveLine function to move block for all rows or columns.*/
-	var calculate = function(direction)
+	/*var calculate = function(direction)
 	{
 	    for(var i=0;i<4;i++)
 	    {
-	        MoveLine(direction,i);
+	        KeyPressed(direction);
 	    }
-	};
+	};*/
 
 	/* A function is used to calculate the score on current table. Score for every block follows the above standard.*/
 	var CalculateScore = function()
@@ -28,6 +28,11 @@
 	    return Score;
 	};
 
+	//display value to the cell
+	var showValue = function (id, num) {
+		document.getElementById(id).innerHTML= num;
+	};
+
 	/*A function is used to display the num on every block.*/
 	var show = function()
 	{
@@ -35,21 +40,16 @@
 	    {
 	        for (var j=0;j<4;j++)
 	        {
-	            var BlockIndex = i * 4 + j; /* transform from 4*4array to block id defined in index.html*/
+	            //(No need)var BlockIndex = i * 4 + j; /* transform from 4*4array to block id defined in index.html*/
 	            if(BlockTable[i][j] !== 0)
 	            {
-	                $("#block"+BlockIndex).text(BlockTable);
+	                showValue(("block" + i + "-" + j),BlockTable[i][j]);
 	            }
 	            else
 	            {
-	                RestBlock--;
-	                $("#block"+BlockIndex).text("");
+	                //RestBlock--;
+	                document.getElementById("block" + i + "-" + j) = "";
 	            }
 	        }
 	    }
 	}
-
-
-
-
-
