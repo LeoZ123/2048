@@ -114,9 +114,9 @@
 		var count = 4;
 		var RandColumn = Math.floor(Math.random() * count);
 		var RandRow = Math.floor(Math.random() * count);
-		var cellValue = document.getElementById("block"+RandRow+"-"+RandColumn).value;
+		var cellValue = document.getElementById("block"+RandRow+"-"+RandColumn).innerHTML;
 
-		if (cellValue == undefined){
+		if (cellValue == ''){
 			return "block"+RandRow+"-"+RandColumn;
 		}
 	};
