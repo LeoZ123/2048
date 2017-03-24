@@ -6,7 +6,7 @@
 var isGameOver;
 
 /* mapping the game table*/
-var BlockTable = [];
+var BlockTable = [][];
 
 
 var newGame = function () {
@@ -64,16 +64,4 @@ var refresh = function () {
     }
     showValue(getRandomFreeCell(),getRandomNumber());
     showValue(getRandomFreeCell(),getRandomNumber());
-};
-
-
-//update block num
-var	updateBlock = function ($block, num) {
-    $block.attr('num',
-            num === 0 ?
-                "no" :
-                num > 2048 ? "super" : num
-        )
-        .find('div')
-        .text(num === 0 ? " " : num)
 };

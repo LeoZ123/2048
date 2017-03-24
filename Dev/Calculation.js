@@ -30,6 +30,7 @@
 
 	//display value to the cell
 	var showValue = function (id, num) {
+		updateBlockTable(id, num);
 		document.getElementById(id).innerHTML= num;
 	};
 

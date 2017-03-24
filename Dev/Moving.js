@@ -61,7 +61,25 @@
 		{
 			return false;
 		}
-		// TODO
+		
+		for(var i = 0; i < 4; i++ ){
+	        for( var j = 3;j > 0; j--){
+	            if (BlockTable[j][i]!=0) {
+	            	if (BlockTable[j-1][i] == 0){
+	            		BlockTable[j-1][i] = BlockTable[j][i];
+	            	}else if (BlockTable[j][i] == BlockTable[j-1][i]){
+	            		BlockTable[j-1][i] = 2*BlockTable[j][i];
+	            		BlockTable[j][i] = 0;
+	            		j--;
+	            		while (BlockTable[j-1][i] == 0 || j>0){
+	            			BlockTable[j-1][i] = BlockTable[j][i];
+	            			BlockTable[j][i] = 0;
+	            			j--;
+	            		}
+	            	}
+	            }
+	        }
+	    }
 
 		return true;
 	};
@@ -73,7 +91,25 @@
 		{
 			return false;
 		}
-		// TODO
+		
+		for(var i = 0; i < 4; i++ ){
+	        for( var j = 0;j < 3; j++){
+	            if (BlockTable[j][i]!=0) {
+	            	if (BlockTable[j+1][i] == 0){
+	            		BlockTable[j+1][i] = BlockTable[j][i];
+	            	}else if (BlockTable[j][i] == BlockTable[j+1][i]){
+	            		BlockTable[j+1][i] = 2*BlockTable[j][i];
+	            		BlockTable[j][i] = 0;
+	            		j++;
+	            		while (BlockTable[j+1][i] == 0 || j<3){
+	            			BlockTable[j+1][i] = BlockTable[j][i];
+	            			BlockTable[j][i] = 0;
+	            			j++;
+	            		}
+	            	}
+	            }
+	        }
+	    }
 
 		return true;
 	};
@@ -86,7 +122,25 @@
 		{
 			return false;
 		}
-		//TODO
+		
+		for(var j = 0; j < 4; j++ ){
+	        for( var i = 3;i > 0; i--){
+	            if (BlockTable[j][i]!=0) {
+	            	if (BlockTable[j][i-1] == 0){
+	            		BlockTable[j][i-1] = BlockTable[j][i];
+	            	}else if (BlockTable[j][i] == BlockTable[j][i-1]){
+	            		BlockTable[j][i-1] = 2*BlockTable[j][i];
+	            		BlockTable[j][i] = 0;
+	            		i--;
+	            		while (BlockTable[j][i-1] == 0 || i>0){
+	            			BlockTable[j][i-1] = BlockTable[j][i];
+	            			BlockTable[j][i] = 0;
+	            			i--;
+	            		}
+	            	}
+	            }
+	        }
+	    }
 
 		return true;
 	};
@@ -98,7 +152,26 @@
 		{
 			return false;
 		}
-		//TODO
+		
+		for(var j = 0; j < 4; j++ ){
+	        for( var i = 0;i < 3; i++){
+	            if (BlockTable[j][i]!=0) {
+	            	if (BlockTable[j][i+1] == 0){
+	            		BlockTable[j][i+1] = BlockTable[j][i];
+	            	}else if (BlockTable[j][i] == BlockTable[j][i+1]){
+	            		BlockTable[j][i+1] = 2*BlockTable[j][i];
+	            		BlockTable[j][i] = 0;
+	            		i++;
+	            		while (BlockTable[j][i+1] == 0 || i<3){
+	            			BlockTable[j][i+1] = BlockTable[j][i];
+	            			BlockTable[j][i] = 0;
+	            			i++;
+	            		}
+	            	}
+	            }
+	        }
+	    }
+
 		return true;
 	};
 
@@ -122,5 +195,9 @@
 	};
 
 
-
+	var updateBlockTable = function (id, num) {
+		var row = id.substring(5,5);
+		var col = id.substring(7,7);  
+		BlockTable[row][col] = num;
+	};
 	
