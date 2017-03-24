@@ -7,41 +7,51 @@
 
 /*-----------------------------keypressed Function---------------------------*/
 	//keypressed function to move blocks
-/*	document.KeyPressed=function(event)
+	document.KeyPressed=function(event)
 	{
 		if(!isGameOver)
 		{
 			//Move Up
 			if(event.keycode == 38)
 			{
-				if(UpMoving())
-				getRandomFreeCell();
+				if(canMoveUp()){
+					UpMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
+				}
+
 			}
 
 			//Move Down
 			if(event.keycode == 40)
 			{
-				if(DownMoving(())
+				if(canMoveDown(())
 				{
-					getRandomFreeCell();
+					DownMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
 				}
 			}
 
 			//Move Left
 			if(event.keycode == 37)
 			{
-				if(LeftMoving(())
+				if(canMoveLeft(())
 				{
-					getRandomFreeCell();
+					LeftMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
 				}
 			}
 
 			//Move Right
 			if(event.keycode == 49)
 			{
-				if(RightMoving())
+				if(canMoveRight())
 				{
-					getRandomFreeCell();
+					RightMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
 				}
 			}
 
@@ -52,16 +62,20 @@
 
 		}
 	};
-*/
+
 /*-------------------------------Moving Function---------------------------*/
 	// when up key pressed, run UpMoving
+	/*
+		move from BOTTOM to TOP
+		if the top cell of the current cell is 0
+			=> just move up
+		if it can merge
+			=> merge the cell to top and clean the current cell
+				=> after the merge, check the top cell is 0
+					=> if it is 0, move the cell the top UNTIL it move to the FINAL cell
+	*/
 	function UpMoving()
-	{
-		if(!canMoveUp())
-		{
-			return false;
-		}
-		
+	{		
 		for(var i = 0; i < 4; i++ ){
 	        for( var j = 3;j > 0; j--){
 	            if (BlockTable[j][i]!=0) {
@@ -80,18 +94,11 @@
 	            }
 	        }
 	    }
-
-		return true;
 	};
 
 	// when down key pressed, run DownMoving
 	function DownMoving()
-	{
-		if(!canMoveDown())
-		{
-			return false;
-		}
-		
+	{		
 		for(var i = 0; i < 4; i++ ){
 	        for( var j = 0;j < 3; j++){
 	            if (BlockTable[j][i]!=0) {
@@ -110,18 +117,12 @@
 	            }
 	        }
 	    }
-
-		return true;
 	};
 
 
 	// when left key pressed, run LeftMoving
 	function LeftMoving()
 	{
-		if(!canMoveLeft())
-		{
-			return false;
-		}
 		
 		for(var j = 0; j < 4; j++ ){
 	        for( var i = 3;i > 0; i--){
@@ -141,18 +142,11 @@
 	            }
 	        }
 	    }
-
-		return true;
 	};
 
 	// when right key pressed, run RightMoving
 	function RightMoving()
 	{
-		if(!canMoveRight())
-		{
-			return false;
-		}
-		
 		for(var j = 0; j < 4; j++ ){
 	        for( var i = 0;i < 3; i++){
 	            if (BlockTable[j][i]!=0) {
@@ -171,8 +165,6 @@
 	            }
 	        }
 	    }
-
-		return true;
 	};
 
 
