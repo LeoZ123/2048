@@ -6,22 +6,20 @@
 var isGameOver;
 
 /* mapping the game table*/
-var BlockTable = [][];
+var BlockTable = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+];
 
 
 var newGame = function () {
-    initGame();
-    isGameOver = false;
-    front.zIndex = "1";
-    game_over.display = "none";
-    score.innerHTML = "";
+    InitialGame();
 };
 
 var gameOver = function () {
     isGameOver = true;
-    front.zIndex = "-";
-    game_over.display = "block";
-    score.innerHTML = "Your Score: " + CalculateScore().toString();
 };
 
 

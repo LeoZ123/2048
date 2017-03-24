@@ -49,7 +49,7 @@
 	            else
 	            {
 	                //RestBlock--;
-	                document.getElementById("block" + i + "-" + j) = "";
+	                document.getElementById("block" + i + "-" + j).innerHTML = "";
 	            }
 	        }
 	    }
