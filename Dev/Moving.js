@@ -7,12 +7,12 @@
 
 /*-----------------------------keypressed Function---------------------------*/
 	//keypressed function to move blocks
-/*	document.KeyPressed=function(event)
+	/*function KeyPressed()
 	{
-		if(!isGameOver)
+		if(!noMove())
 		{
 			//Move Up
-			if(event.keycode == 38)
+			if(event.keyCode == 38)
 			{
 				if(canMoveUp()){
 					UpMoving();
@@ -23,7 +23,7 @@
 			}
 
 			//Move Down
-			if(event.keycode == 40)
+			if(event.keyCode == 40)
 			{
 				if(canMoveDown(())
 				{
@@ -34,7 +34,7 @@
 			}
 
 			//Move Left
-			if(event.keycode == 37)
+			if(event.keyCode == 37)
 			{
 				if(canMoveLeft(())
 				{
@@ -45,7 +45,7 @@
 			}
 
 			//Move Right
-			if(event.keycode == 49)
+			if(event.keyCode == 49)
 			{
 				if(canMoveRight())
 				{
@@ -54,14 +54,8 @@
 					showValue(getRandomFreeCell(),getRandomNumber());
 				}
 			}
-
-			if(noMove())
-			{
-				isGameOver = true;
-			}
-
 		}
-	};
+	}
 */
 /*-------------------------------Moving Function---------------------------*/
 	// when up key pressed, run UpMoving
@@ -75,7 +69,7 @@
 					=> if it is 0, move the cell the top UNTIL it move to the FINAL cell
 	*/
 	function UpMoving()
-	{		
+	{
 		for(var i = 0; i < 4; i++ ){
 	        for( var j = 3;j > 0; j--){
 	            if (BlockTable[j][i]!=0) {
@@ -94,11 +88,11 @@
 	            }
 	        }
 	    }
-	};
+	}
 
 	// when down key pressed, run DownMoving
 	function DownMoving()
-	{		
+	{
 		for(var i = 0; i < 4; i++ ){
 	        for( var j = 0;j < 3; j++){
 	            if (BlockTable[j][i]!=0) {
@@ -117,13 +111,13 @@
 	            }
 	        }
 	    }
-	};
+	}
 
 
 	// when left key pressed, run LeftMoving
 	function LeftMoving()
 	{
-		
+
 		for(var j = 0; j < 4; j++ ){
 	        for( var i = 3;i > 0; i--){
 	            if (BlockTable[j][i]!=0) {
@@ -142,7 +136,7 @@
 	            }
 	        }
 	    }
-	};
+	}
 
 	// when right key pressed, run RightMoving
 	function RightMoving()
@@ -165,7 +159,7 @@
 	            }
 	        }
 	    }
-	};
+	}
 
 
 /*-------------------------------Display Function---------------------------*/
@@ -183,12 +177,11 @@
 		if (cellValue == ''){
 			return "block"+RandRow+"-"+RandColumn;
 		}
-	};
+	}
 
 
 	function updateBlockTable (id, num) {
 		var row = id.substring(5,6);
-		var col = id.substring(7,8);  
+		var col = id.substring(7,8);
 		BlockTable[row][col] = num;
-	};
-	
+	}

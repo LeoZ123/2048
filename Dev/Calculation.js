@@ -4,53 +4,32 @@
 
 // This file is used to calculate the score of game
 
-
-	/*function is used to call MoveLine function to move block for all rows or columns.*/
-	/*var calculate = function(direction)
-	{
-	    for(var i=0;i<4;i++)
-	    {
-	        KeyPressed(direction);
-	    }
-	};*/
-
-	/* A function is used to calculate the score on current table. Score for every block follows the above standard.*/
-	function CalculateScore ()
-	{
-	    var ScoreTable =[0,2,5,10,25,50,125,250,500,1000,2000,4000,8000,16000,32000];
-	    for (var i=0;i<4;i++)
-	    {
-	        for(var j=0;i<4;j++)
-	        {
-	            Score+=ScoreTable[Math.log2(BlockTable[i][j])];
-	        }
-	    }
-	    return Score;
-	};
+	var Score=0;
 
 	//display value to the cell
 	function showValue (id, num) {
 		updateBlockTable(id, num);
 		document.getElementById(id).innerHTML= num;
-	};
+	}
 
 	/*A function is used to display the num on every block.*/
 	function show ()
 	{
+		//var ScoreTable =[0,2,5,10,25,50,125,250,500,1000,2000,4000,8000,16000,32000];
 	    for (var i=0;i<4;i++)
 	    {
 	        for (var j=0;j<4;j++)
 	        {
-	            //(No need)var BlockIndex = i * 4 + j; /* transform from 4*4array to block id defined in index.html*/
+				//Score+=ScoreTable[Math.log2(BlockTable[i][j])];
 	            if(BlockTable[i][j] !== 0)
 	            {
 	                showValue(("block" + i + "-" + j),BlockTable[i][j]);
 	            }
 	            else
 	            {
-	                //RestBlock--;
 	                document.getElementById("block" + i + "-" + j).innerHTML = "";
 	            }
 	        }
 	    }
+		//document.getElementById(YourScore).innerText='Your Score:' + Score;
 	}

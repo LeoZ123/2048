@@ -4,7 +4,8 @@
     <!--link files-->
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="Moving.js" ></script>
     <script type="text/javascript" src="Init.js"></script>
     <script type="text/javascript" src="Calculation.js"></script>
@@ -23,7 +24,7 @@
 	<!--body-->
     <body  style="align: center">
         <!--Button for start and restart the game-->
-        <button Class="button" type="button" onclick="StartGame()"> Let's Play! </button>
+        <button Class="button" type="button" onclick="refresh()"> Let's Play! </button>
         <!--set block id from 0-0 - 3-3-->
         <div class="main">
             <div class="block" id="block0-0"></div>
@@ -45,10 +46,6 @@
             <div class="block" id="block3-1"></div>
             <div class="block" id="block3-2"></div>
             <div class="block" id="block3-3"></div>
-        </div>
-
-        <div class="score">
-
         </div>
 
     </body>

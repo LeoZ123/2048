@@ -3,8 +3,6 @@
  */
 // This file is used to start and restart the game
 
-var isGameOver;
-
 /* mapping the game table*/
 var BlockTable = [
     [0, 0, 0, 0],
@@ -13,43 +11,60 @@ var BlockTable = [
     [0, 0, 0, 0]
 ];
 
-
-function newGame () {
-    InitialGame();
-};
-
-function gameOver () {
-    isGameOver = true;
-};
-
-
-//check if it is full
-function isFull ()         //Need to be updated
-{
-    if (RestBlock === 16)
-    {
-        return isGameOver=true;
-    }
-    return isGameOver=false;
-};
-
-/*RestBlock to record how many empty block left and available to create new value*/
-var RestBlock;
-var Score;
-
-function InitialGame()
-{
-    RestBlock=16;
-    Score=0;
-    isGameOver=false;
-}
-
 //start the game
-function StartGame ()
+$(document).ready(function ()
 {
-    InitialGame();
     refresh();
-};
+    /*$(document).keydown(function (event)
+    {
+        //if(!noMove())
+		//{
+			//Move Up
+			if(event.keyCode == 38)
+			{
+				if(canMoveUp()){
+					UpMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
+				}
+
+			}
+
+			//Move Down
+			if(event.keyCode == 40)
+			{
+				if(canMoveDown(())
+				{
+					DownMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
+				}
+			}
+
+			//Move Left
+			if(event.keyCode == 37)
+			{
+				if(canMoveLeft(())
+				{
+					LeftMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
+				}
+			}
+
+			//Move Right
+			if(event.keyCode == 49)
+			{
+				if(canMoveRight())
+				{
+					RightMoving();
+					show();
+					showValue(getRandomFreeCell(),getRandomNumber());
+				}
+			}
+		//}
+	});*/
+});
 
 //play again
 function refresh () {
@@ -62,4 +77,4 @@ function refresh () {
     }
     showValue(getRandomFreeCell(),getRandomNumber());
     showValue(getRandomFreeCell(),getRandomNumber());
-};
+}
