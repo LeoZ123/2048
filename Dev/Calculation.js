@@ -15,7 +15,7 @@
 	};*/
 
 	/* A function is used to calculate the score on current table. Score for every block follows the above standard.*/
-	var CalculateScore = function()
+	function CalculateScore ()
 	{
 	    var ScoreTable =[0,2,5,10,25,50,125,250,500,1000,2000,4000,8000,16000,32000];
 	    for (var i=0;i<4;i++)
@@ -29,13 +29,13 @@
 	};
 
 	//display value to the cell
-	var showValue = function (id, num) {
+	function showValue (id, num) {
 		updateBlockTable(id, num);
 		document.getElementById(id).innerHTML= num;
 	};
 
 	/*A function is used to display the num on every block.*/
-	var show = function()
+	function show ()
 	{
 	    for (var i=0;i<4;i++)
 	    {

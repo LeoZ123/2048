@@ -169,13 +169,12 @@
 
 
 /*-------------------------------Display Function---------------------------*/
-	var getRandomNumber = function () {
+	function getRandomNumber () {
 		return Math.random() > 0.3 ? 2 : 4;
 	};
 
-
 	//generate a valid to store an random num created from getRandomNumber
-	var getRandomFreeCell = function () {
+	function getRandomFreeCell () {
 		var count = 4;
 		var RandColumn = Math.floor(Math.random() * count);
 		var RandRow = Math.floor(Math.random() * count);
@@ -187,7 +186,7 @@
 	};
 
 
-	var updateBlockTable = function (id, num) {
+	function updateBlockTable (id, num) {
 		var row = id.substring(5,6);
 		var col = id.substring(7,8);  
 		BlockTable[row][col] = num;

@@ -14,17 +14,17 @@ var BlockTable = [
 ];
 
 
-var newGame = function () {
+function newGame () {
     InitialGame();
 };
 
-var gameOver = function () {
+function gameOver () {
     isGameOver = true;
 };
 
 
 //check if it is full
-var isFull = function()         //Need to be updated
+function isFull ()         //Need to be updated
 {
     if (RestBlock === 16)
     {
@@ -45,14 +45,14 @@ function InitialGame()
 }
 
 //start the game
-var StartGame=function ()
+function StartGame ()
 {
     InitialGame();
     refresh();
 };
 
 //play again
-var refresh = function () {
+function refresh () {
     for (var i=0;i<4;i++)
     {
         for(var j=0;j<4;j++)
