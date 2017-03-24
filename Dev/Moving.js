@@ -7,7 +7,7 @@
 
 /*-----------------------------keypressed Function---------------------------*/
 	//keypressed function to move blocks
-	document.KeyPressed=function(event)
+/*	document.KeyPressed=function(event)
 	{
 		if(!isGameOver)
 		{
@@ -62,7 +62,7 @@
 
 		}
 	};
-
+*/
 /*-------------------------------Moving Function---------------------------*/
 	// when up key pressed, run UpMoving
 	/*
@@ -188,8 +188,8 @@
 
 
 	var updateBlockTable = function (id, num) {
-		var row = id.substring(5,5);
-		var col = id.substring(7,7);  
+		var row = id.substring(5,6);
+		var col = id.substring(7,8);  
 		BlockTable[row][col] = num;
 	};
 	
