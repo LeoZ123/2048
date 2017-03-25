@@ -56,23 +56,33 @@
 	            	if (BlockTable[j-1][i] == 0){
 	            		BlockTable[j-1][i] = BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		if (BlockTable[j+1][i] !=0){
+	            		if (i<3) {
+	            			if (BlockTable[j+1][i] !=0 && i<3){
 	            			BlockTable[j][i]=BlockTable[j+1][i];
 	            			BlockTable[j+1][i]=0;
+	            			}
 	            		}
+	            		
 	            		show = true;
 	            	}else if (BlockTable[j][i] == BlockTable[j-1][i]){
 	            		BlockTable[j-1][i] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
 
-	            		while (BlockTable[j-2][i] == 0 || j>1){
-	            			if (BlockTable[j+1][i] !=0){
-	            				BlockTable[j][i]=BlockTable[j+1][i];
+	            		while (BlockTable[j-2][i] == 0){
+	            			if (i<3){
+	            				if (BlockTable[j+1][i] !=0){
+	            					BlockTable[j][i]=BlockTable[j+1][i];
+	            				}
 	            			}
+	            			
 	            			BlockTable[j-2][i] = BlockTable[j-1][i];
 	            			BlockTable[j-1][i] = 0;
 	            			j--;
+	            			if(j-2<0){
+	            				break;
+	            			}
 	            		}
+
 	            		j--;
 	            		show = true;
 	            	}
@@ -94,21 +104,30 @@
 	            	if (BlockTable[j+1][i] == 0){
 	            		BlockTable[j+1][i] = BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		if (BlockTable[j-1][i] !=0){
+	            		if(j>0){
+	            			if (BlockTable[j-1][i] !=0){
 	            			BlockTable[j][i]=BlockTable[j-1][i];
 	            			BlockTable[j-1][i]=0;
+	            			}
 	            		}
+	            		
 	            		show = true;
 	            	}else if (BlockTable[j][i] == BlockTable[j+1][i]){
 	            		BlockTable[j+1][i] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		while (BlockTable[j+2][i] == 0 || j<2){
-	            			if (BlockTable[j-1][i] !=0){
-	            				BlockTable[j][i]=BlockTable[j-1][i];
+	            		while (BlockTable[j+2][i] == 0){
+	            			if (j>0){
+	            				if (BlockTable[j-1][i] !=0 ){
+	            					BlockTable[j][i]=BlockTable[j-1][i];
+	            				}
 	            			}
+	            			
 	            			BlockTable[j+2][i] = BlockTable[j+1][i];
 	            			BlockTable[j+1][i] = 0;
 	            			j++;
+	            			if(j+2>3){
+	            				break;
+	            			}
 	            		}
 	            		j++;
 	            		show = true;
@@ -132,21 +151,30 @@
 	            	if (BlockTable[j][i-1] == 0){
 	            		BlockTable[j][i-1] = BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		if (BlockTable[j][i+1] !=0){
-	            			BlockTable[j][i]=BlockTable[j][i+1];
-	            			BlockTable[j][i+1]=0;
+	            		if(i<3){
+	            			if (BlockTable[j][i+1] !=0){
+	            				BlockTable[j][i]=BlockTable[j][i+1];
+	            				BlockTable[j][i+1]=0;
+	            			}
 	            		}
+	            	
 	            		show = true;
 	            	}else if (BlockTable[j][i] == BlockTable[j][i-1]){
 	            		BlockTable[j][i-1] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		while (BlockTable[j][i-2] == 0 || i>1){
-	            			if (BlockTable[j][i+1] !=0){
-	            				BlockTable[j][i]=BlockTable[j][i+1];
+	            		while (BlockTable[j][i-2] == 0){
+	            			if(i<3){
+	            				if (BlockTable[j][i+1] !=0 ){
+	            					BlockTable[j][i]=BlockTable[j][i+1];
+	            				}	
 	            			}
+	            			
 	            			BlockTable[j][i-2] = BlockTable[j][i-1];
 	            			BlockTable[j][i-1] = 0;
 	            			i--;
+	            			if(i-2<0){
+	            				break;
+	            			}
 	            		}
 	            		i--;
 	            		show = true;
@@ -169,21 +197,30 @@
 	            	if (BlockTable[j][i+1] == 0){
 	            		BlockTable[j][i+1] = BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		if (BlockTable[j][i-1] !=0){
+	            		if (i>0){
+	            			if (BlockTable[j][i-1] !=0 ){
 	            			BlockTable[j][i]=BlockTable[j][i-1];
 	            			BlockTable[j][i-1]=0;
 	            		}
+	            		}
+	            		
 	            		show = true;
 	            	}else if (BlockTable[j][i] == BlockTable[j][i+1]){
 	            		BlockTable[j][i+1] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		while (BlockTable[j][i+2] == 0 || i<2){
-	            			if (BlockTable[j][i-1] !=0){
-	            				BlockTable[j][i]=BlockTable[j][i-1];
+	            		while (BlockTable[j][i+2] == 0){
+	            			if(i>0){
+	            				if (BlockTable[j][i-1] !=0 ){
+	            					BlockTable[j][i]=BlockTable[j][i-1];
+	            				}
 	            			}
+	            			
 	            			BlockTable[j][i+2] = BlockTable[j][i+1];
 	            			BlockTable[j][i+1] = 0;
 	            			i++;
+	            			if(i+2>4){
+	            				break;
+	            			}
 	            		}
 	            		i++;
 	            		show = true;
