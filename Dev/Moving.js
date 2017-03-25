@@ -56,10 +56,10 @@
 	            	if (BlockTable[j-1][i] == 0){
 	            		BlockTable[j-1][i] = BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		if (i<3) {
-	            			if (BlockTable[j+1][i] !=0 && i<3){
-	            			BlockTable[j][i]=BlockTable[j+1][i];
-	            			BlockTable[j+1][i]=0;
+	            		if (j<3) {
+	            			if (BlockTable[j+1][i] !=0){
+		            			BlockTable[j][i]=BlockTable[j+1][i];
+		            			BlockTable[j+1][i]=0;
 	            			}
 	            		}
 	            		
@@ -67,22 +67,22 @@
 	            	}else if (BlockTable[j][i] == BlockTable[j-1][i]){
 	            		BlockTable[j-1][i] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-
-	            		while (BlockTable[j-2][i] == 0){
-	            			if (i<3){
-	            				if (BlockTable[j+1][i] !=0){
-	            					BlockTable[j][i]=BlockTable[j+1][i];
-	            				}
-	            			}
-	            			
-	            			BlockTable[j-2][i] = BlockTable[j-1][i];
-	            			BlockTable[j-1][i] = 0;
-	            			j--;
-	            			if(j-2<0){
-	            				break;
-	            			}
-	            		}
-
+	            		if (j>1){
+		            		while (BlockTable[j-2][i] == 0){
+		            			if (j<3){
+		            				if (BlockTable[j+1][i] !=0){
+		            					BlockTable[j][i]=BlockTable[j+1][i];
+		            				}
+		            			}
+		            			
+		            			BlockTable[j-2][i] = BlockTable[j-1][i];
+		            			BlockTable[j-1][i] = 0;
+		            			j--;
+		            			if(j-2<0){
+		            				break;
+		            			}
+		            		}
+						}
 	            		j--;
 	            		show = true;
 	            	}
@@ -92,6 +92,7 @@
 	    if (show){
 	    	afterMove();
 	    }
+	    print();
 	}
 
 	// when down key pressed, run DownMoving
@@ -115,19 +116,21 @@
 	            	}else if (BlockTable[j][i] == BlockTable[j+1][i]){
 	            		BlockTable[j+1][i] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		while (BlockTable[j+2][i] == 0){
-	            			if (j>0){
-	            				if (BlockTable[j-1][i] !=0 ){
-	            					BlockTable[j][i]=BlockTable[j-1][i];
-	            				}
-	            			}
-	            			
-	            			BlockTable[j+2][i] = BlockTable[j+1][i];
-	            			BlockTable[j+1][i] = 0;
-	            			j++;
-	            			if(j+2>3){
-	            				break;
-	            			}
+	            		if(j<3){
+		            		while (BlockTable[j+2][i] == 0){
+		            			if (j>0){
+		            				if (BlockTable[j-1][i] !=0 ){
+		            					BlockTable[j][i]=BlockTable[j-1][i];
+		            				}
+		            			}
+		            			
+		            			BlockTable[j+2][i] = BlockTable[j+1][i];
+		            			BlockTable[j+1][i] = 0;
+		            			j++;
+		            			if(j+2>3){
+		            				break;
+		            			}
+		            		}
 	            		}
 	            		j++;
 	            		show = true;
@@ -138,6 +141,7 @@
 	    if (show){
 	    	afterMove();
 	    }
+	    print();
 	}
 
 
@@ -162,19 +166,21 @@
 	            	}else if (BlockTable[j][i] == BlockTable[j][i-1]){
 	            		BlockTable[j][i-1] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		while (BlockTable[j][i-2] == 0){
-	            			if(i<3){
-	            				if (BlockTable[j][i+1] !=0 ){
-	            					BlockTable[j][i]=BlockTable[j][i+1];
-	            				}	
-	            			}
-	            			
-	            			BlockTable[j][i-2] = BlockTable[j][i-1];
-	            			BlockTable[j][i-1] = 0;
-	            			i--;
-	            			if(i-2<0){
-	            				break;
-	            			}
+	            		if (i>1){
+		            		while (BlockTable[j][i-2] == 0){
+		            			if(i<3){
+		            				if (BlockTable[j][i+1] !=0 ){
+		            					BlockTable[j][i]=BlockTable[j][i+1];
+		            				}	
+		            			}
+		            			
+		            			BlockTable[j][i-2] = BlockTable[j][i-1];
+		            			BlockTable[j][i-1] = 0;
+		            			i--;
+		            			if(i-2<0){
+		            				break;
+		            			}
+		            		}
 	            		}
 	            		i--;
 	            		show = true;
@@ -185,6 +191,7 @@
 	    if (show){
 	    	afterMove();
 	    }
+	    print();
 	}
 
 	// when right key pressed, run RightMoving
@@ -199,28 +206,30 @@
 	            		BlockTable[j][i] = 0;
 	            		if (i>0){
 	            			if (BlockTable[j][i-1] !=0 ){
-	            			BlockTable[j][i]=BlockTable[j][i-1];
-	            			BlockTable[j][i-1]=0;
-	            		}
+		            			BlockTable[j][i]=BlockTable[j][i-1];
+		            			BlockTable[j][i-1]=0;
+	            			}
 	            		}
 	            		
 	            		show = true;
 	            	}else if (BlockTable[j][i] == BlockTable[j][i+1]){
 	            		BlockTable[j][i+1] = 2*BlockTable[j][i];
 	            		BlockTable[j][i] = 0;
-	            		while (BlockTable[j][i+2] == 0){
-	            			if(i>0){
-	            				if (BlockTable[j][i-1] !=0 ){
-	            					BlockTable[j][i]=BlockTable[j][i-1];
-	            				}
-	            			}
-	            			
-	            			BlockTable[j][i+2] = BlockTable[j][i+1];
-	            			BlockTable[j][i+1] = 0;
-	            			i++;
-	            			if(i+2>4){
-	            				break;
-	            			}
+	            		if (i<3){
+		            		while (BlockTable[j][i+2] == 0){
+		            			if(i>0){
+		            				if (BlockTable[j][i-1] !=0 ){
+		            					BlockTable[j][i]=BlockTable[j][i-1];
+		            				}
+		            			}
+		            			
+		            			BlockTable[j][i+2] = BlockTable[j][i+1];
+		            			BlockTable[j][i+1] = 0;
+		            			i++;
+		            			if(i>2){
+		            				break;
+		            			}
+		            		}
 	            		}
 	            		i++;
 	            		show = true;
@@ -231,6 +240,7 @@
 	    if (show){
 	    	afterMove();
 	    }
+	    print();
 	}
 
 	function afterMove()
@@ -245,19 +255,16 @@
 
 	//generate a valid to store an random num created from getRandomNumber
 	function getRandomFreeCell () {
-		var count = 4;
-		var RandColumn = Math.floor(Math.random() * count);
-		var RandRow = Math.floor(Math.random() * count);
-		var cellValue = document.getElementById("block"+RandRow+"-"+RandColumn).innerHTML;
-
-		if (cellValue == ''){
-			return "block"+RandRow+"-"+RandColumn;
-		}
+		do{
+			var count = 4;
+			var RandColumn = Math.floor(Math.random() * count);
+			var RandRow = Math.floor(Math.random() * count);
+			if (BlockTable[RandRow][RandColumn] == 0){
+				return "block"+RandRow+"-"+RandColumn;
+			}
+		}while(BlockTable[RandRow][RandColumn]!=0)
 	}
 
-
-	function updateBlockTable (id, num) {
-		var row = id.substring(5,6);
-		var col = id.substring(7,8);
-		BlockTable[row][col] = num;
+	function print (){
+		console.log(BlockTable);
 	}

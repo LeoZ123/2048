@@ -12,6 +12,12 @@
 		document.getElementById(id).innerHTML= num;
 	}
 
+	function updateBlockTable (id, num) {
+		var row = id.substring(5,6);
+		var col = id.substring(7,8);
+		BlockTable[row][col] = num;
+	}
+
 	/*A function is used to display the num on every block.*/
 	function show ()
 	{
@@ -23,7 +29,7 @@
 				//Score+=ScoreTable[Math.log2(BlockTable[i][j])];
 	            if(BlockTable[i][j] !== 0)
 	            {
-	                showValue(("block" + i + "-" + j),BlockTable[i][j]);
+	                document.getElementById("block" + i + "-" + j).innerHTML = BlockTable[i][j];
 	            }
 	            else
 	            {
