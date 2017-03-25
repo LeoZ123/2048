@@ -15,14 +15,14 @@
 
 
     <!--header-->
-    <head>
+    <head ng-keypress="KeyPressed(event)">
         <meta charset="utf-8" />
         <title>2048</title>
     </head>
     <!--End header-->
 
 	<!--body-->
-    <body  style="align: center">
+    <body  style="align: center" onkeypress="KeyPressed(event)">
         <!--Button for start and restart the game-->
         <button Class="button" type="button" onclick="refresh()"> Let's Play! </button>
         <!--set block id from 0-0 - 3-3-->

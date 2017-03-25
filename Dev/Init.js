@@ -73,6 +73,7 @@ function refresh () {
         for(var j=0;j<4;j++)
         {
             document.getElementById("block"+i+"-"+j).innerHTML="";
+            BlockTable[i][j]=0;
         }
     }
     showValue(getRandomFreeCell(),getRandomNumber());
