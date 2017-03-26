@@ -51,86 +51,19 @@
 	{
 		var show = false;
 		for(var i = 0; i < 4; i++ ){
-	        for( var j = 3;j > 0; j--){
-	            if (BlockTable[j][i]!=0) {
-	            	if (BlockTable[j-1][i] == 0){
-	            		BlockTable[j-1][i] = BlockTable[j][i];
+	        for( var j = 0;j <4; j++){
+	        	if (BlockTable[j][i]==0){
+	        		cancelUpZero(j,i);
+	        		if(BlockTable[j][i] != 0){
+	        			show = true;
+	        		}
+	        	}
+	            if (BlockTable[j][i]!=0 && j>0) {
+	            	if (BlockTable[j][i] == BlockTable[j-1][i]){
+	            		BlockTable[j-1][i] = 2*BlockTable[j-1][i];
 	            		BlockTable[j][i] = 0;
-	            		if (j<3) {
-	            			if (BlockTable[j+1][i] !=0){
-		            			BlockTable[j][i]=BlockTable[j+1][i];
-		            			BlockTable[j+1][i]=0;
-	            			}
-	            		}
-	            		
-	            		show = true;
-	            	}else if (BlockTable[j][i] == BlockTable[j-1][i]){
-	            		BlockTable[j-1][i] = 2*BlockTable[j][i];
-	            		BlockTable[j][i] = 0;
-	            		if (j>1){
-		            		while (BlockTable[j-2][i] == 0){
-		            			if (j<3){
-		            				if (BlockTable[j+1][i] !=0){
-		            					BlockTable[j][i]=BlockTable[j+1][i];
-		            				}
-		            			}
-		            			
-		            			BlockTable[j-2][i] = BlockTable[j-1][i];
-		            			BlockTable[j-1][i] = 0;
-		            			j--;
-		            			if(j-2<0){
-		            				break;
-		            			}
-		            		}
-						}
-	            		j--;
-	            		show = true;
-	            	}
-	            }
-	        }
-	    }
-	    if (show){
-	    	afterMove();
-	    }
-	    print();
-	}
-
-	// when down key pressed, run DownMoving
-	function DownMoving()
-	{
-		var show = false;
-		for(var i = 0; i < 4; i++ ){
-	        for( var j = 0;j < 3; j++){
-	            if (BlockTable[j][i]!=0) {
-	            	if (BlockTable[j+1][i] == 0){
-	            		BlockTable[j+1][i] = BlockTable[j][i];
-	            		BlockTable[j][i] = 0;
-	            		if(j>0){
-	            			if (BlockTable[j-1][i] !=0){
-	            			BlockTable[j][i]=BlockTable[j-1][i];
-	            			BlockTable[j-1][i]=0;
-	            			}
-	            		}
-	            		
-	            		show = true;
-	            	}else if (BlockTable[j][i] == BlockTable[j+1][i]){
-	            		BlockTable[j+1][i] = 2*BlockTable[j][i];
-	            		BlockTable[j][i] = 0;
-	            		if(j<3){
-		            		while (BlockTable[j+2][i] == 0){
-		            			if (j>0){
-		            				if (BlockTable[j-1][i] !=0 ){
-		            					BlockTable[j][i]=BlockTable[j-1][i];
-		            				}
-		            			}
-		            			
-		            			BlockTable[j+2][i] = BlockTable[j+1][i];
-		            			BlockTable[j+1][i] = 0;
-		            			j++;
-		            			if(j+2>3){
-		            				break;
-		            			}
-		            		}
+	            		for (var row=j;row<3;row++) {
+	            			cancelUpZero(row,i);
 	            		}
 	            		j++;
 	            		show = true;
@@ -141,95 +74,74 @@
 	    if (show){
 	    	afterMove();
 	    }
-	    print();
 	}
 
+	function cancelUpZero(j,i){
+		var tempRow = j;
+		while(BlockTable[j][i]==0 && tempRow <3){
+		    BlockTable[j][i] = BlockTable[tempRow+1][i];
+		    BlockTable[tempRow+1][i] = 0;
+		    tempRow++;
+		}
+	}
 
-	// when left key pressed, run LeftMoving
-	function LeftMoving()
+	// when down key pressed, run DownMoving
+	function DownMoving()
 	{
 		var show = false;
-		for(var j = 0; j < 4; j++ ){
-	        for( var i = 3;i > 0; i--){
-	            if (BlockTable[j][i]!=0) {
-	            	if (BlockTable[j][i-1] == 0){
-	            		BlockTable[j][i-1] = BlockTable[j][i];
+		for(var i = 0; i < 4; i++ ){
+	        for( var j = 3;j >= 0; j--){
+	        	if (BlockTable[j][i]==0){
+	        		cancelDownZero (j,i);
+	        		if(BlockTable[j][i] != 0){
+	        			show = true;
+	        		}
+	        	}
+	            if (BlockTable[j][i]!=0 && j<3) {
+	            	if (BlockTable[j][i] == BlockTable[j+1][i]){
+	            		BlockTable[j+1][i] = 2*BlockTable[j+1][i];
 	            		BlockTable[j][i] = 0;
-	            		if(i<3){
-	            			if (BlockTable[j][i+1] !=0){
-	            				BlockTable[j][i]=BlockTable[j][i+1];
-	            				BlockTable[j][i+1]=0;
-	            			}
+		        		for (var row=j;row>0;row--) {
+	            			cancelDownZero(row,i);
 	            		}
-	            	
+	            		j--;
 	            		show = true;
-	            	}else if (BlockTable[j][i] == BlockTable[j][i-1]){
-	            		BlockTable[j][i-1] = 2*BlockTable[j][i];
-	            		BlockTable[j][i] = 0;
-	            		if (i>1){
-		            		while (BlockTable[j][i-2] == 0){
-		            			if(i<3){
-		            				if (BlockTable[j][i+1] !=0 ){
-		            					BlockTable[j][i]=BlockTable[j][i+1];
-		            				}	
-		            			}
-		            			
-		            			BlockTable[j][i-2] = BlockTable[j][i-1];
-		            			BlockTable[j][i-1] = 0;
-		            			i--;
-		            			if(i-2<0){
-		            				break;
-		            			}
-		            		}
-	            		}
-	            		i--;
-	            		show = true;
-	            	} 	
+	            	}
 	            }
 	        }
 	    }
 	    if (show){
 	    	afterMove();
 	    }
-	    print();
 	}
 
-	// when right key pressed, run RightMoving
-	function RightMoving()
+	function cancelDownZero (j,i){
+		var tempRow = j;
+	    while(BlockTable[j][i]==0 && tempRow >0){
+	        BlockTable[j][i] = BlockTable[tempRow-1][i];
+	        BlockTable[tempRow-1][i] = 0;
+	        tempRow--;
+	    }
+	}
+
+	// when left key pressed, run LeftMoving
+	function LeftMoving()
 	{
 		var show = false;
 		for(var j = 0; j < 4; j++ ){
-	        for( var i = 0;i < 3; i++){
-	            if (BlockTable[j][i]!=0) {
-	            	if (BlockTable[j][i+1] == 0){
-	            		BlockTable[j][i+1] = BlockTable[j][i];
+	        for( var i = 0;i <4; i++){
+	        	if (BlockTable[j][i]==0){
+	        		cancelLeftZero(j,i);
+	        		if(BlockTable[j][i] != 0){
+	        			show = true;
+	        		}
+	        	}
+	            if (BlockTable[j][i]!=0 && i>0) {
+					if (BlockTable[j][i] == BlockTable[j][i-1]){
+	            		BlockTable[j][i-1] = 2*BlockTable[j][i-1];
 	            		BlockTable[j][i] = 0;
-	            		if (i>0){
-	            			if (BlockTable[j][i-1] !=0 ){
-		            			BlockTable[j][i]=BlockTable[j][i-1];
-		            			BlockTable[j][i-1]=0;
-	            			}
-	            		}
-	            		
-	            		show = true;
-	            	}else if (BlockTable[j][i] == BlockTable[j][i+1]){
-	            		BlockTable[j][i+1] = 2*BlockTable[j][i];
-	            		BlockTable[j][i] = 0;
-	            		if (i<3){
-		            		while (BlockTable[j][i+2] == 0){
-		            			if(i>0){
-		            				if (BlockTable[j][i-1] !=0 ){
-		            					BlockTable[j][i]=BlockTable[j][i-1];
-		            				}
-		            			}
-		            			
-		            			BlockTable[j][i+2] = BlockTable[j][i+1];
-		            			BlockTable[j][i+1] = 0;
-		            			i++;
-		            			if(i>2){
-		            				break;
-		            			}
-		            		}
+	            		for (var col=i;col<3;col++) {
+	            			cancelLeftZero(j,col);
 	            		}
 	            		i++;
 	            		show = true;
@@ -240,7 +152,54 @@
 	    if (show){
 	    	afterMove();
 	    }
-	    print();
+	}
+
+	function cancelLeftZero(j,i){
+		var tempcol = i;
+	    while(BlockTable[j][i]==0 && tempcol <3){
+	        BlockTable[j][i] = BlockTable[j][tempcol+1];
+	        BlockTable[j][tempcol+1] = 0;
+	        tempcol++;
+	    }
+	}
+
+	// when right key pressed, run RightMoving
+	function RightMoving()
+	{
+		var show = false;
+		for(var j = 0; j < 4; j++ ){
+	        for( var i = 3;i >= 0; i--){
+	        	if (BlockTable[j][i]==0){
+	        		cancelRightZero(j,i);
+	        		if(BlockTable[j][i] != 0){
+	        			show = true;
+	        		}
+	        	}
+	            if (BlockTable[j][i]!=0 && i<3) {
+	            	if (BlockTable[j][i] == BlockTable[j][i+1]){
+	            		BlockTable[j][i+1] = 2*BlockTable[j][i+1];
+	            		BlockTable[j][i] = 0;
+	            		for (var col=i;col>0;col--) {
+	            			cancelRightZero(j,col);
+	            		}
+	            		i--;
+	            		show = true;
+	            	}
+	            }
+	        }
+	    }
+	    if (show){
+	    	afterMove();
+	    }
+	}
+
+	function cancelRightZero(j,i){
+		var tempcol = i;
+	    while(BlockTable[j][i]==0 && tempcol >0){
+	        BlockTable[j][i] = BlockTable[j][tempcol-1];
+	        BlockTable[j][tempcol-1] = 0;
+	        tempcol--;
+	    }
 	}
 
 	function afterMove()
@@ -248,6 +207,7 @@
 		show();
 		showValue(getRandomFreeCell(),getRandomNumber());
 	}
+	
 /*-------------------------------Display Function---------------------------*/
 	function getRandomNumber () {
 		return Math.random() > 0.3 ? 2 : 4;
@@ -263,8 +223,4 @@
 				return "block"+RandRow+"-"+RandColumn;
 			}
 		}while(BlockTable[RandRow][RandColumn]!=0)
-	}
-
-	function print (){
-		console.log(BlockTable);
 	}
