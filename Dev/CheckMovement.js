@@ -8,7 +8,7 @@
 
 
  //Check Move Up
-function canMoveUp()
+/*function canMoveUp()
 {
     for(var i = 0; i < 4; i++ )
     {
@@ -81,7 +81,7 @@ function canMoveLeft()
          }
      }
      return false;
- }
+ }*/
 
 
 //cannot move
