@@ -61,6 +61,7 @@
 	            if (BlockTable[j][i]!=0 && j>0) {
 	            	if (BlockTable[j][i] == BlockTable[j-1][i]){
 	            		BlockTable[j-1][i] = 2*BlockTable[j-1][i];
+	            		updateScore(BlockTable[j-1][i]);
 	            		BlockTable[j][i] = 0;
 	            		for (var row=j;row<3;row++) {
 	            			cancelUpZero(row,i);
@@ -100,6 +101,7 @@
 	            if (BlockTable[j][i]!=0 && j<3) {
 	            	if (BlockTable[j][i] == BlockTable[j+1][i]){
 	            		BlockTable[j+1][i] = 2*BlockTable[j+1][i];
+	            		updateScore(BlockTable[j+1][i]);
 	            		BlockTable[j][i] = 0;
 		        		for (var row=j;row>0;row--) {
 	            			cancelDownZero(row,i);
@@ -139,6 +141,7 @@
 	            if (BlockTable[j][i]!=0 && i>0) {
 					if (BlockTable[j][i] == BlockTable[j][i-1]){
 	            		BlockTable[j][i-1] = 2*BlockTable[j][i-1];
+	            		updateScore(BlockTable[j][i-1]);
 	            		BlockTable[j][i] = 0;
 	            		for (var col=i;col<3;col++) {
 	            			cancelLeftZero(j,col);
@@ -178,6 +181,7 @@
 	            if (BlockTable[j][i]!=0 && i<3) {
 	            	if (BlockTable[j][i] == BlockTable[j][i+1]){
 	            		BlockTable[j][i+1] = 2*BlockTable[j][i+1];
+	            		updateScore(BlockTable[j][i+1]);
 	            		BlockTable[j][i] = 0;
 	            		for (var col=i;col>0;col--) {
 	            			cancelRightZero(j,col);
@@ -211,7 +215,7 @@
 /*-------------------------------Display Function---------------------------*/
 	function getRandomNumber () {
 		return Math.random() > 0.3 ? 2 : 4;
-	};
+	}
 
 	//generate a valid to store an random num created from getRandomNumber
 	function getRandomFreeCell () {
