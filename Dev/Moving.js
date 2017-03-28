@@ -210,6 +210,10 @@
 	{
 		show();
 		showValue(getRandomFreeCell(),getRandomNumber());
+		if (!canMerge()){
+			window.alert("Game Over");
+			refresh();
+		}
 	}
 	
 /*-------------------------------Display Function---------------------------*/
@@ -228,3 +232,27 @@
 			}
 		}while(BlockTable[RandRow][RandColumn]!=0)
 	}
+ 	
+ 	function canMerge (){
+ 		var merge = false;
+ 		var value;
+ 		for (var row = 0; row<=3; row++){
+ 			for (var col = 0; col<=3; col++){
+ 				value = BlockTable[row][col];
+ 				if (value == 0){
+ 					merge = true;
+ 				}
+ 				if (row > 0){
+ 					if (value == BlockTable[row-1][col]){
+ 						merge = true;
+ 					}
+ 				}
+ 				if (col > 0){
+ 					if (value == BlockTable[row][col-1]){
+ 						merge = true;
+ 					}
+ 				}
+ 			}
+ 		}
+ 		return merge;
+ 	}

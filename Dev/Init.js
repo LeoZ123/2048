@@ -24,6 +24,8 @@ $(document).ready(function ()
 
 //play again
 function refresh () {
+    score = 0;
+    document.getElementById("yourScore").innerHTML = score;
     for (var i=0;i<4;i++)
     {
         for(var j=0;j<4;j++)
