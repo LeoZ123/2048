@@ -6,7 +6,7 @@
 // This file is used to move the block.
 
 /*-----------------------------keypressed Function---------------------------*/
-	//keypressed function to move blocks
+	//keypressed function to move blocks by using Arrow and WASD
 	function KeyPressed(event)
 	{
 			var code = event.which || event.keyCode;
@@ -18,19 +18,19 @@
 			}
 
 			//Move Down
-			if(code == 40 || code ==115)
+			if(code == 40 || code == 115)
 			{
 				DownMoving();
 			}
 
 			//Move Left
-			if(code == 37 || code ==97)
+			if(code == 37 || code == 97)
 			{
 				LeftMoving();
 			}
 
 			//Move Right
-			if(code == 49 || code ==100)
+			if(code == 49 || code == 100)
 			{
 				RightMoving();
 			}
@@ -211,11 +211,12 @@
 		show();
 		showValue(getRandomFreeCell(),getRandomNumber());
 		if (!canMerge()){
-			window.alert("Game Over");
+			//window.alert("Game Over");
+			alert('Game over! \n Your Score:'+ '  ' + score);
 			refresh();
 		}
 	}
-	
+
 /*-------------------------------Display Function---------------------------*/
 	function getRandomNumber () {
 		return Math.random() > 0.3 ? 2 : 4;
@@ -232,26 +233,27 @@
 			}
 		}while(BlockTable[RandRow][RandColumn]!=0)
 	}
- 	
+
  	function canMerge (){
+ 		var merge = false;
  		var value;
  		for (var row = 0; row<=3; row++){
  			for (var col = 0; col<=3; col++){
  				value = BlockTable[row][col];
  				if (value == 0){
- 					return true;
+ 					merge = true;
  				}
  				if (row > 0){
  					if (value == BlockTable[row-1][col]){
- 						return true;
+ 						merge = true;
  					}
  				}
  				if (col > 0){
  					if (value == BlockTable[row][col-1]){
- 						return true;
+ 						merge = true;
  					}
  				}
  			}
  		}
- 		return false;
+ 		return merge;
  	}

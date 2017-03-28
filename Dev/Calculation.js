@@ -19,18 +19,23 @@
 	/*A function is used to display the num on every block.*/
 	function show ()
 	{
+		var ScoreIndex;
 	    for (var i=0;i<4;i++)
 	    {
 	        for (var j=0;j<4;j++)
 	        {
 	            if(BlockTable[i][j] !== 0)
 	            {
+					ScoreIndex = "score" + BlockTable[i][j];
 	                document.getElementById("block" + i + "-" + j).innerHTML = BlockTable[i][j];
+					document.getElementById("block" + i + "-" + j).style.backgroundColor = ScoreColorTable[ScoreIndex];
 	            }
 	            else
 	            {
+					ScoreIndex = "score" + BlockTable[i][j];
 	                document.getElementById("block" + i + "-" + j).innerHTML = "";
-	            }
+					document.getElementById("block" + i + "-" + j).style.backgroundColor = ScoreColorTable[ScoreIndex];
+				}
 	        }
 	    }
 
