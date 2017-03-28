@@ -234,25 +234,24 @@
 	}
  	
  	function canMerge (){
- 		var merge = false;
  		var value;
  		for (var row = 0; row<=3; row++){
  			for (var col = 0; col<=3; col++){
  				value = BlockTable[row][col];
  				if (value == 0){
- 					merge = true;
+ 					return true;
  				}
  				if (row > 0){
  					if (value == BlockTable[row-1][col]){
- 						merge = true;
+ 						return true;
  					}
  				}
  				if (col > 0){
  					if (value == BlockTable[row][col-1]){
- 						merge = true;
+ 						return true;
  					}
  				}
  			}
  		}
- 		return merge;
+ 		return false;
  	}
