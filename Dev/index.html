@@ -24,8 +24,10 @@
     <body  style="align: center" onkeypress="KeyPressed(event)">
         <!--Button for start and restart the game-->
         <button Class="button" type="button" onclick="refresh()"> Let's Play! </button>
-        <p>Best Score: <span id ="bestScore">0</span></p>
-        <p>Your Score: <span id ="yourScore">0</span></p>
+        <div class="score">
+            <p>Best Score: <span id ="bestScore">0</span></p>
+            <p>Your Score: <span id ="yourScore">0</span></p>
+        </div>
         <!--set block id from 0-0 - 3-3-->
         <div class="main">
             <div class="block" id="block0-0"></div>

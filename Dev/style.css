@@ -12,7 +12,7 @@
 	background-color: #585858;
 	border-color: #585858;
 	top: 40px;
-	left: 400px;
+	left: 200px;
 	border-radius: 10px;
 	position: absolute;
 }
@@ -30,9 +30,15 @@
 	color: white;
 }
 
+.score
+{
+	font-size: 20px;
+	font-style: italic;
+}
+
 .button {
     background-color: white;
-    border: 2px solid #4CAF50;
+    border: 2px solid #005eff;
     color: black;
     padding: 16px 32px;
     text-align: center;
@@ -46,6 +52,6 @@
 }
 
 .button:hover {
-    background-color: #4CAF50;
+    background-color: #005eff;
     color: white;
 }
