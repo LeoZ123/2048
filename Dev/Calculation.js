@@ -33,13 +33,13 @@
 	            }
 	        }
 	    }
-	    if (score>0){
-	    	if (score > pageBestScore){
-	    		localStorage.setItem("bestScore", score);
-	    		document.getElementById("bestScore").innerHTML = score;
-	    	}
-	    	document.getElementById("yourScore").innerHTML = score;
+
+	    if (score > pageBestScore){
+	    	localStorage.setItem("bestScore", score);
+	    	document.getElementById("bestScore").innerHTML = score;
 	    }
+	    document.getElementById("yourScore").innerHTML = score;
+
 	}
 
 
