@@ -73,4 +73,5 @@ function refresh () {
     }
     showValue(getRandomFreeCell(),getRandomNumber());
     showValue(getRandomFreeCell(),getRandomNumber());
+    show();
 }

@@ -208,8 +208,8 @@
 
 	function afterMove()
 	{
-		show();
 		showValue(getRandomFreeCell(),getRandomNumber());
+		show();
 		if (!canMerge()){
 			//window.alert("Game Over");
 			alert('Game over! \n Your Score:'+ '  ' + score);
