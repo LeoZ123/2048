@@ -211,8 +211,10 @@
 		showValue(getRandomFreeCell(),getRandomNumber());
 		show();
 		if (!canMerge()){
-			alert('Game over! \n Your Score:'+ '  ' + score);
-			refresh();
+			setTimeout(function() {
+  				alert('Game over! \n Your Score:'+ '  ' + score);
+  				refresh();
+			}, 0);
 		}
 	}
 
