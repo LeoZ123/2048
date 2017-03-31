@@ -14,14 +14,14 @@
 
 
     <!--header-->
-    <head onkeypress="KeyPressed(event)">
+    <head onkeypress="KeyPressed(event)" onkeydown="KeyPressed(event)">
         <meta charset="utf-8" />
         <title>2048</title>
     </head>
     <!--End header-->
 
 	<!--body-->
-    <body  style="align: center" onkeypress="KeyPressed(event)">
+    <body  style="align: center" onkeypress="KeyPressed(event)" onkeydown="KeyPressed(event)">
         <!--Button for start and restart the game-->
         <button class="button" id="button_StartGame" type="button" onclick="refresh()"> Let's Play! </button>
         <div class="score">

@@ -30,7 +30,7 @@
 			}
 
 			//Move Right
-			if(code == 49 || code == 100)
+			if(code == 39 || code == 100)
 			{
 				RightMoving();
 			}
