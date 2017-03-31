@@ -1,4 +1,4 @@
-# 2048 Web Version
+# 2048 Web Version1.0
 
 ## Files
 [File: Calculation.js](https://github.com/gmc2777522/2048/blob/master/Dev/Calculation.js):　display blocks and update block table values</br>
