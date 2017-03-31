@@ -7,5 +7,8 @@
 [File: index.html](https://github.com/gmc2777522/2048/blob/master/Dev/index.html):　game home page</br>
 [File: style.css](https://github.com/gmc2777522/2048/blob/master/Dev/style.css):　css file</br>
 
+## Document
+[2048Document.pdf](https://github.com/gmc2777522/2048/blob/master/2048Document.pdf)</br>
+
 ## Screenshot
 <img src="https://github.com/gmc2777522/2048/blob/master/main_page.png">
