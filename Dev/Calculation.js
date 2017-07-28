@@ -26,8 +26,9 @@
 	        {
 	            if(BlockTable[i][j] !== 0)
 	            {
-	            	if(BlockTable[i][j] == 2048){
+	            	if(BlockTable[i][j] == 2048 && win == false){
 	            		setTimeout(function() {
+	            		win = true;
   						alert('YOU WIN!!! \n Try to complete 4096!!');
 						}, 0);
 	            	}

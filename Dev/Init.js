@@ -5,6 +5,7 @@
 
 var score = 0;
 var pageBestScore = 0;
+var win  = false;
 /*scoreTable to  calculate the score*/
 var scoreTable ={
     score0:0,
