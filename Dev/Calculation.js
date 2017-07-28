@@ -26,6 +26,12 @@
 	        {
 	            if(BlockTable[i][j] !== 0)
 	            {
+	            	if(BlockTable[i][j] == 2048){
+	            		setTimeout(function() {
+  						alert('YOU WIN!!! \n Try to complete 4096!!');
+						}, 0);
+	            	}
+
 					ScoreIndex = "score" + BlockTable[i][j];
 	                document.getElementById("block" + i + "-" + j).innerHTML = BlockTable[i][j];
 					document.getElementById("block" + i + "-" + j).style.backgroundColor = ScoreColorTable[ScoreIndex];
