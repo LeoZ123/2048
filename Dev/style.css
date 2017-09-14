@@ -51,6 +51,13 @@
     cursor: pointer;
 }
 
+.link{
+	font-size: 17px;
+	font-style: italic;
+	top: 600px;
+	left: 200px;
+}
+
 .button:hover {
     background-color: #005eff;
     color: white;
