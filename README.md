@@ -1,5 +1,9 @@
 # 2048 Web Version1.0
 
+## Created by
+[Mengcheng Gong](https://github.com/gmc2777522)</br>
+[Hao Zhong](https://github.com/LeoZ123)</br>
+
 ## Files
 [File: Calculation.js](https://github.com/gmc2777522/2048/blob/master/Dev/Calculation.js):　display blocks and update block table values</br>
 [File: Init.js](https://github.com/gmc2777522/2048/blob/master/Dev/Init.js):　initialize variables using for restart game</br>
